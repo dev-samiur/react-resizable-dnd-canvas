@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rnd } from "react-rnd";
 import { Box } from '@material-ui/core';
 
 interface ResizableDNDCanvasProps{
     imgSrc: string
-    // handleHeightChange(e:number):void
-    // handleWidthChange(e:number):void
+    imgWidth: any
+    imgHeight: any
+    handleHeightChange(e:any):void
+    handleWidthChange(e:any):void
 }
 
 const style = {
@@ -17,12 +19,20 @@ const style = {
     overflow: 'hidden'
 };
 
-const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc}) => {
+const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc, imgHeight, imgWidth, handleHeightChange, handleWidthChange}) => {
   
- const [x, setX]= useState<number>(10) 
- const [y, setY]= useState<number>(10) 
- const [width, setWidth]= useState<string>('400') 
- const [height, setHeight]= useState<string>('400') 
+    const [x, setX]= useState<number>(10) 
+    const [y, setY]= useState<number>(10) 
+    const [width, setWidth]= useState<string>(imgWidth) 
+    const [height, setHeight]= useState<string>(imgHeight) 
+
+    useEffect(() => {
+        setHeight(imgHeight)
+    }, [imgHeight])
+
+    useEffect(() => {
+        setWidth(imgWidth)
+    }, [imgWidth])
 
  return (
     <Rnd
@@ -36,6 +46,8 @@ const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc}) => {
         onResizeStop={(e, direction, ref, delta, position) => {
             setWidth(ref.style.width)
             setHeight(ref.style.height)
+            handleHeightChange(ref.style.height)
+            handleWidthChange(ref.style.width)
             setX(position.x)
             setY(position.y)
           }

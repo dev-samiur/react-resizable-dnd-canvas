@@ -10,13 +10,15 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 const Home= () => {
 
     const [image, setImage]= useState<string>('https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
+    const [width, setWidth]= useState<any>(400)
+    const [height, setHeight]= useState<any>(400)
 
-    const handleWidthChange= () => {
-
+    const handleWidthChange= (e:any) => {
+        setWidth(e)
     }
 
-    const handleHeightChange= () => {
-        
+    const handleHeightChange= (e:any) => {
+       setHeight(e) 
     }
 
     const handleImageUpload= (e:any) => {
@@ -42,12 +44,19 @@ const Home= () => {
                 >
                     <ResizableDNDCanvas 
                         imgSrc={image}
-                        // handleHeightChange={handleHeightChange} 
-                        // handleWidthChange={handleWidthChange}
+                        imgHeight={height}
+                        imgWidth={width}
+                        handleHeightChange={handleHeightChange} 
+                        handleWidthChange={handleWidthChange}
                     />
                 </Grid>
                 <Grid item xs={12} md={5} style={{}}>
-                    <CanvasScaller />
+                    <CanvasScaller 
+                        imgHeight={height}
+                        imgWidth={width}
+                        handleHeightChange={handleHeightChange} 
+                        handleWidthChange={handleWidthChange}
+                    />
                 </Grid>
             </Grid>
             <Grid container justify="center" style={{marginTop: 50}}>
