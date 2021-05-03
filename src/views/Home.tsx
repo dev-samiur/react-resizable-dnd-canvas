@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout'
 import { Container, Grid } from '@material-ui/core';
 import ResizableDNDCanvas from '../components/ResizableDNDCanvas'
+import CanvasScaller from '../components/CanvasScaller'
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -37,7 +38,7 @@ const Home= () => {
                 <Grid 
                     item 
                     xs={12} md={7} 
-                    style={{overflow: 'hidden', height: 600, border: '1px solid red', position: 'relative'}}
+                    style={{overflow: 'hidden', height: 600, background: '#eee',position: 'relative', borderRadius: 5}}
                 >
                     <ResizableDNDCanvas 
                         imgSrc={image}
@@ -45,8 +46,8 @@ const Home= () => {
                         // handleWidthChange={handleWidthChange}
                     />
                 </Grid>
-                <Grid item xs={12} md={5} style={{border: '1px solid red'}}>
-                    Row 2
+                <Grid item xs={12} md={5} style={{}}>
+                    <CanvasScaller />
                 </Grid>
             </Grid>
             <Grid container justify="center" style={{marginTop: 50}}>
