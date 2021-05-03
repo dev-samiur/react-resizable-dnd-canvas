@@ -41,7 +41,7 @@ const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc}) => {
           }
         }
       >
-        <img src={imgSrc} style={{width: width, height: height}} />
+        <img src={imgSrc} style={{ width: width, height: height, objectFit: 'cover' }} />
       </Rnd>
   );
 }
