@@ -10,8 +10,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 const Home= () => {
 
     const [image, setImage]= useState<string>('https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
-    const [width, setWidth]= useState<any>('400px')
-    const [height, setHeight]= useState<any>('400px')
+    const [width, setWidth]= useState<any>('600px')
+    const [height, setHeight]= useState<any>('500px')
 
     const handleWidthChange= (e:any) => {
         setWidth(e)
@@ -40,7 +40,14 @@ const Home= () => {
                 <Grid 
                     item 
                     xs={12} md={7} 
-                    style={{overflow: 'hidden', height: 600, background: '#eee',position: 'relative', borderRadius: 5}}
+                    style={{
+                        overflow: 'hidden', 
+                        height: 600, 
+                        background: `url(${image})`, 
+                        position: 'relative', 
+                        borderRadius: 5, 
+                        backgroundSize: 'cover',
+                    }}
                 >
                     <ResizableDNDCanvas 
                         imgSrc={image}
@@ -54,10 +61,11 @@ const Home= () => {
                     <Box 
                         display="flex" 
                         alignItems="center" 
+                        justifyContent="center"
                         height="100%"
-                        style={{transform: 'rotate(-90deg)'}}
+                        style={{background: '#0e9aa7', color: "#FFF", width: 40}}
                     >
-                        {width}
+                        <span style={{transform: 'rotate(-90deg)'}}>{width}</span>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={4} style={{}}>
@@ -72,8 +80,10 @@ const Home= () => {
             <Grid container style={{marginTop: 50}}>
                 <Grid item xs={12} md={7}>
                     <Box 
+                        style={{background: '#0e9aa7', color: "#FFF",height: 40}}
                         display="flex"
                         justifyContent="center"
+                        alignItems="center"
                     >
                         {height}
                     </Box>

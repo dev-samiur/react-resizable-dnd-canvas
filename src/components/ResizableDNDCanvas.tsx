@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Rnd } from "react-rnd";
-import { Box } from '@material-ui/core';
 
 interface ResizableDNDCanvasProps{
-    imgSrc: string
+    imgSrc?: string
     imgWidth: any
     imgHeight: any
     handleHeightChange(e:any):void
@@ -15,8 +14,9 @@ const style = {
     alignItems: "center",
     justifyContent: "center",
     border: "solid 1px #ddd",
-    background: "#f0f0f0",
-    overflow: 'hidden'
+    background: "transparent",
+    overflow: 'hidden',
+    cursor: 'pointer'
 };
 
 const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc, imgHeight, imgWidth, handleHeightChange, handleWidthChange}) => {
@@ -53,9 +53,6 @@ const ResizableDNDCanvas: React.FC<ResizableDNDCanvasProps>= ({imgSrc, imgHeight
           }
         }
       >
-        <img 
-            src={imgSrc} 
-            style={{ width: "100%", height: "100%", objectFit: 'cover' }} />
       </Rnd>
   );
 }
