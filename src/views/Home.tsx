@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout'
 import { Container, Grid } from '@material-ui/core';
 import ResizableDNDCanvas from '../components/ResizableDNDCanvas'
+import ResizableDNDCropper from '../components/ResizableDNDCropper'
 import CanvasScaller from '../components/CanvasScaller'
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button/Button';
@@ -10,8 +11,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 const Home= () => {
 
     const [image, setImage]= useState<string>('https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
-    const [width, setWidth]= useState<any>('600px')
-    const [height, setHeight]= useState<any>('500px')
+    const [width, setWidth]= useState<any>(456)
+    const [height, setHeight]= useState<any>(456)
 
     const handleWidthChange= (e:any) => {
         setWidth(e)
@@ -42,17 +43,20 @@ const Home= () => {
                     xs={12} md={7} 
                     style={{
                         overflow: 'hidden', 
-                        height: 600, 
-                        background: `url(${image})`, 
-                        position: 'relative', 
-                        borderRadius: 5, 
-                        backgroundSize: 'cover',
+                        height: 500,
                     }}
                 >
-                    <ResizableDNDCanvas 
+                    {/* <ResizableDNDCanvas 
                         imgSrc={image}
                         imgHeight={height}
                         imgWidth={width}
+                        handleHeightChange={handleHeightChange} 
+                        handleWidthChange={handleWidthChange}
+                    /> */}
+                    <ResizableDNDCropper 
+                        imgSrc={image} 
+                        cropHeight={height}
+                        cropWidth={width}
                         handleHeightChange={handleHeightChange} 
                         handleWidthChange={handleWidthChange}
                     />
@@ -65,7 +69,7 @@ const Home= () => {
                         height="100%"
                         style={{background: '#0e9aa7', color: "#FFF", width: 40}}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>{width}</span>
+                        <span style={{transform: 'rotate(-90deg)'}}>{width}px</span>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={4} style={{}}>
@@ -85,7 +89,7 @@ const Home= () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        {height}
+                        {height}px
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={5}>
