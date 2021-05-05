@@ -69,7 +69,7 @@ const Home= () => {
                         height="100%"
                         style={{background: '#0e9aa7', color: "#FFF", width: 40}}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>{width}px</span>
+                        <span style={{transform: 'rotate(-90deg)'}}>{height}px</span>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={4} style={{}}>
@@ -89,7 +89,7 @@ const Home= () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        {height}px
+                        {width}px
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={5}>
